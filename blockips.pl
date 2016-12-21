@@ -24,7 +24,6 @@ if(scalar(@ip_list) > 0){
 	my $tmp_md5=md5sum($tmp_file);
 	if($nginx_md5 ne $tmp_md5){
 		system("cp $tmp_file $nginx_conffile");
-		my $reload_exit=&nginx_reload;
 	}
 }
 
@@ -40,15 +39,4 @@ sub md5sum{
 	}
 
 	return $digest;
-}
-
-sub nginx_reload{
-	my $check_conf=system("nginx -t");
-	if($check_conf==0){
-		system("nginx -s reload");
-		return 1;
-	}
-	else{
-		return 0;
-	}
 }
