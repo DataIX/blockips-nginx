@@ -24,7 +24,7 @@ if(scalar(@ip_list) > 0){
 	my $nginx_md5=md5sum($nginx_conffile);
 	my $tmp_md5=md5sum($tmp_file);
 	if($nginx_md5 ne $tmp_md5){
-		move $tmp_file $nginx_conffile;
+		move $tmp_file, $nginx_conffile;
 	}
 }
 
