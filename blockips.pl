@@ -42,3 +42,21 @@ sub md5sum{
 	return $digest;
 }
 __END__;
+
+
+References:
+	1. https://www.badips.com/documentation#7
+	2. https://github.com/DataIX/blockips-nginx
+
+	API:
+	GET /add/<category>/<IP>
+	GET /get/categories
+	GET /get/stats/count
+	GET /get/stats/countbycountry
+	GET /get/stats/countbycategory
+	GET /get/stats/countbyopenport
+	GET /get/list/<category>/<score>
+	GET /get/info/<IP>
+	GET /get/country/<country>
+	GET /get/key
+	GET /set/key/<key>
