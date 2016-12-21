@@ -43,9 +43,9 @@ sub md5sum{
 }
 
 sub nginx_reload{
-	my $check_conf=system("/usr/sbin/nginx -t");
+	my $check_conf=system("/usr/bin/env nginx -t");
 	if($check_conf==0){
-		system("/usr/sbin/nginx -s reload");
+		system("/usr/bin/env nginx -s reload");
 		return 1;
 	}
 	else{
