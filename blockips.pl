@@ -5,7 +5,7 @@ use warnings;
 use LWP::Simple;
 use Digest::MD5;
 
-my $url="http://www.badips.com/get/list/wordpress/";
+my $url="http://www.badips.com/get/list/http/0";
 my $tmp_file="/tmp/blockips.conf";
 my $nginx_conffile="/etc/nginx/conf.d/blockips.conf";
 my $script_name=$0;
