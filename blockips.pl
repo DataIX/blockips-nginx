@@ -4,6 +4,7 @@ use warnings;
 
 use LWP::Simple;
 use Digest::MD5;
+use File::Copy qw(move);
 
 my $url="http://www.badips.com/get/list/http/0";
 my $tmp_file="/tmp/blockips.conf";
@@ -23,7 +24,7 @@ if(scalar(@ip_list) > 0){
 	my $nginx_md5=md5sum($nginx_conffile);
 	my $tmp_md5=md5sum($tmp_file);
 	if($nginx_md5 ne $tmp_md5){
-		system("cp $tmp_file $nginx_conffile");
+		move $tmp_file $nginx_conffile;
 	}
 }
 
@@ -40,3 +41,4 @@ sub md5sum{
 
 	return $digest;
 }
+__END__;
