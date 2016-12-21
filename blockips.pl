@@ -25,13 +25,6 @@ if(scalar(@ip_list) > 0){
 	if($nginx_md5 ne $tmp_md5){
 		system("/bin/cp $tmp_file $nginx_conffile");
 		my $reload_exit=&nginx_reload;
-		if($reload_exit){
-			&git_commit;
-		}
-		else{
-			&git_revert($nginx_conffile);
-			&nginx_reload;
-		}
 	}
 }
 
@@ -59,13 +52,3 @@ sub nginx_reload{
 		return 0;
 	}
 }
-
-sub git_commit{
-	system("/usr/bin/etckeeper commit \"nginx blocked ip list updated by $script_name\"");
-}
-
-sub git_revert{
-	my $file=shift;
-	system("/usr/bin/etckeeper vcs checkout $file");
-}
-
